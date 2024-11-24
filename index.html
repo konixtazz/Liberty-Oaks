@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nom de ton Serveur FiveM</title>
+  <title>Liberty Oaks</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header>
-    <h1>Bienvenue sur [Nom du Serveur]</h1>
+    <h1>Bienvenue sur Liberty Oaks</h1>
     <p>Rejoignez l'aventure sur notre serveur FiveM !</p>
   </header>
   <nav>
@@ -16,6 +16,7 @@
       <li><a href="#about">À propos</a></li>
       <li><a href="#features">Fonctionnalités</a></li>
       <li><a href="#join">Nous rejoindre</a></li>
+      <li><a href="#Boutique">Notre Boutique</a></li>
     </ul>
   </nav>
   <section id="about">
@@ -36,6 +37,32 @@
     <p>Connectez-vous avec l'IP suivante : <strong>[IP de ton serveur]</strong></p>
     <p>Rejoignez notre <a href="https://discord.gg/libertyoaks" target="_blank">Discord</a> pour en savoir plus !</p>
   </section>
+  <section id="shop">
+    <h2>Notre Boutique</h2>
+    <p>Soutenez le serveur et débloquez des contenus exclusifs en visitant notre boutique !</p>
+    <button id="open-shop">Accéder à la boutique</button>
+  </section>
+  
+  <script>
+    document.getElementById('open-shop').addEventListener('click', () => {
+      alert("Redirection vers la boutique...");
+      window.location.href = "https://konixtazz.github.io/Liberty-Oaks---Boutique/";
+    });
+  </script>
+  
+  <script>
+    // Écouteur pour le bouton de la boutique
+    document.getElementById('open-shop').addEventListener('click', () => {
+      // Envoie un événement au serveur FiveM via NUI
+      fetch(`https://${GetParentResourceName()}/openShop`, {
+        method: 'POST',
+      }).then(() => {
+        console.log("Demande pour ouvrir la boutique envoyée.");
+      }).catch(err => {
+        console.error("Erreur lors de l'envoi de la demande :", err);
+      });
+    });
+  </script>
   <footer>
     <p>&copy; 2024 Liberty Oaks. Tous droits réservés.</p>
   </footer>
